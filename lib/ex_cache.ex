@@ -27,8 +27,8 @@ defmodule ExCache do
     end
   end
 
-  def fetch(key, fun) when is_function(fun) do
-    fetch(key, fun.())
+  def fetch(key, value) when is_function(value) do
+    fetch(key, value.())
   end
   def fetch(key, value) do
     if not exist?(key) do

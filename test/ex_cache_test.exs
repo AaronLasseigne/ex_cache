@@ -28,7 +28,7 @@ defmodule ExCacheTest do
     assert ExCache.read(:d2) == :error
   end
 
-  test "fetch(key, fun)" do
+  test "fetch(key, value) when is_function(value)" do
     assert ExCache.fetch(:ff, fn -> 1 + 1 end) == 2
 
     ExCache.write(:ff, 1)
@@ -40,6 +40,5 @@ defmodule ExCacheTest do
 
     ExCache.write(:fv, 1)
     assert ExCache.fetch(:fv, 2) == 1
-
   end
 end
