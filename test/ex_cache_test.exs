@@ -10,6 +10,7 @@ defmodule ExCacheTest do
 
   test "write" do
     assert ExCache.write(:w, 1) == :ok
+    assert ExCache.read(:w) == {:ok, 1}
   end
 
   test "exist?" do
