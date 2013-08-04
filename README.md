@@ -16,4 +16,5 @@ ExCache.delete(:a) # => :ok
 ExCache.fetch :a, fn ->
   1 + 1
 end
+# => 2
 ```
