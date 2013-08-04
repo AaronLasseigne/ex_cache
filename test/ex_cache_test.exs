@@ -27,4 +27,19 @@ defmodule ExCacheTest do
     assert ExCache.delete(:d2) == :ok
     assert ExCache.read(:d2) == :error
   end
+
+  test "fetch(key, fun)" do
+    assert ExCache.fetch(:ff, fn -> 1 + 1 end) == 2
+
+    ExCache.write(:ff, 1)
+    assert ExCache.fetch(:ff, fn -> 1 + 1 end) == 1
+  end
+
+  test "fetch(key, value)" do
+    assert ExCache.fetch(:fv, 2) == 2
+
+    ExCache.write(:fv, 1)
+    assert ExCache.fetch(:fv, 2) == 1
+
+  end
 end

@@ -27,6 +27,17 @@ defmodule ExCache do
     end
   end
 
+  def fetch(key, fun) when is_function(fun) do
+    fetch(key, fun.())
+  end
+  def fetch(key, value) do
+    if not exist?(key) do
+      write(key, value)
+    end
+
+    elem read(key), 1
+  end
+
   defp server, do: :ex_cache
 
   defp cast(args) do
