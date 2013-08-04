@@ -20,4 +20,8 @@ defmodule ExCache.Server do
   def handle_call({:exist?, key}, _from, dict) do
     {:reply, HashDict.has_key?(dict, key), dict}
   end
+
+  def handle_cast({:delete, key}, dict) do
+    {:noreply, HashDict.delete(dict, key)}
+  end
 end

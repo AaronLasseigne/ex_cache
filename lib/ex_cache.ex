@@ -17,7 +17,22 @@ defmodule ExCache do
     call({:exist?, key})
   end
 
+  def delete(key) do
+    if exist?(key) do
+      cast({:delete, key})
+      :ok
+    else
+      :error
+    end
+  end
+
+  defp server, do: :ex_cache
+
+  defp cast(args) do
+    :gen_server.cast(server, args)
+  end
+
   defp call(args) do
-    :gen_server.call(:ex_cache, args)
+    :gen_server.call(server, args)
   end
 end

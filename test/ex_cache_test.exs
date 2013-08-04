@@ -19,4 +19,12 @@ defmodule ExCacheTest do
     ExCache.write(:e, 1)
     assert ExCache.exist?(:e)
   end
+
+  test "delete(key)" do
+    assert ExCache.delete(:d1) == :error
+
+    ExCache.write(:d2, 1)
+    assert ExCache.delete(:d2) == :ok
+    assert ExCache.read(:d2) == :error
+  end
 end
