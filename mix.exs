@@ -2,15 +2,20 @@ defmodule ExCache.Mixfile do
   use Mix.Project
 
   def project do
-    [ app: :ex_cache,
+    [
+      app:     :ex_cache,
       version: "0.0.1",
-      elixir: "~> 0.10.1",
-      deps: deps ]
+      elixir:  "~> 0.10.1",
+      deps:    deps
+    ]
   end
 
   # Configuration for the OTP application
   def application do
-    []
+    [
+      registered: [:ex_cache],
+      mod:        {ExCache, HashDict.new}
+    ]
   end
 
   # Returns the list of dependencies in the format:
