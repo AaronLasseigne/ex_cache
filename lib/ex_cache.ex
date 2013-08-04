@@ -12,4 +12,8 @@ defmodule ExCache do
   def write(key, value) do
     :gen_server.call(:ex_cache, {:write, key, value})
   end
+
+  def exist?(key) do
+    :gen_server.call(:ex_cache, {:exist?, key})
+  end
 end
