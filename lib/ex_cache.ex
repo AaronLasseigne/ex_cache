@@ -10,7 +10,8 @@ defmodule ExCache do
   end
 
   def write(key, value) do
-    call({:write, key, value})
+    cast({:write, key, value})
+    :ok
   end
 
   def exist?(key) do

@@ -13,8 +13,8 @@ defmodule ExCache.Server do
     {:reply, HashDict.fetch(dict, key), dict}
   end
 
-  def handle_call({:write, key, value}, _from, dict) do
-    {:reply, :ok, HashDict.put(dict, key, value)}
+  def handle_cast({:write, key, value}, dict) do
+    {:noreply, HashDict.put(dict, key, value)}
   end
 
   def handle_call({:exist?, key}, _from, dict) do
