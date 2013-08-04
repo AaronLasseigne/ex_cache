@@ -1,19 +1,19 @@
 defmodule ExCacheTest do
   use ExUnit.Case
 
-  test "read" do
+  test "read(key)" do
     assert ExCache.read(:r) == :error
 
     ExCache.write(:r, 1)
     assert ExCache.read(:r) == {:ok, 1}
   end
 
-  test "write" do
+  test "write(key, value)" do
     assert ExCache.write(:w, 1) == :ok
     assert ExCache.read(:w) == {:ok, 1}
   end
 
-  test "exist?" do
+  test "exist?(key)" do
     refute ExCache.exist?(:e)
 
     ExCache.write(:e, 1)
